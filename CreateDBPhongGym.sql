@@ -1,6 +1,7 @@
-Create Databese QLPhongGym
+Create Database QLPhongGym
 Use QLPhongGym
 Go
+
 CREATE TABLE DMGoiTap(
    ID int IDENTITY(1,1),
    Name nvarchar(100) not null,
