@@ -1,0 +1,190 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="QLGym.SiteMaster" %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Title -->
+    <title>Gym club | Home</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/Content/img/core-img/favicon.ico">
+
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="/Content/style.css">
+
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent"></asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <i class="circle-preloader"></i>
+        <img src="/Content/img/core-img/salad.png" alt="">
+    </div>
+
+    <!-- Search Wrapper -->
+    <div class="search-wrapper">
+        <!-- Close Btn -->
+        <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+        <%--<div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <form action="#" method="post">
+                        <input type="search" name="search" placeholder="Type any keywords...">
+                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>--%>
+    </div>
+
+    <form runat="server">
+        <!-- ##### Header Area Start ##### -->
+        <header class="header-area">
+
+            <!-- Top Header Area -->
+            <div class="top-header-area">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-between">
+                        <!-- Breaking News -->
+                        <div class="col-12 col-sm-6">
+                            <div class="breaking-news">
+                                <div id="breakingNewsTicker" class="ticker">
+                                    <ul>
+                                        <li><a href="#">Welcome to my gym club.</a></li>
+                                        <li><a href="#">Hello <%=_user.Name %>!</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Top Social Info -->
+                        <div class="col-12 col-sm-2">
+                            <div class="top-social-info text-right">
+                                <%--<input type="button" class="btn delicious-btn m-1 logout" value="Logout"/>--%>
+                                <asp:Button runat="server" ID="btnLogOut" CssClass="btn delicious-btn m-1 logout" Text="Logout" OnClick="btnLogOut_Click" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navbar Area -->
+            <div class="delicious-main-menu">
+                <div class="classy-nav-container breakpoint-off">
+                    <div class="container">
+                        <!-- Menu -->
+                        <nav class="classy-navbar justify-content-between" id="deliciousNav" style="border-bottom: 1px solid #4CAF50">
+
+                            <!-- Logo -->
+                            <a class="nav-brand" href="index.html">
+                                <img src="/Content/img/core-img/logo.png" alt=""></a>
+
+                            <!-- Navbar Toggler -->
+                            <div class="classy-navbar-toggler">
+                                <span class="navbarToggler"><span></span><span></span><span></span></span>
+                            </div>
+
+                            <!-- Menu -->
+                            <div class="classy-menu">
+
+                                <!-- close btn -->
+                                <div class="classycloseIcon">
+                                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                                </div>
+
+                                <!-- Nav Start -->
+                                <div class="classynav">
+                                    <ul id="NavMenu">
+                                        <li><a href="index.html">Lịch tập</a></li>
+                                        <li><a href="CustomerList.html">Danh sách khách hàng</a></li>
+                                        <li><a href="/Page/Coach/CoachList.aspx">Danh sách huấn luyện viên</a></li>
+                                        <li><a href="#">Thu chi</a></li>
+                                    </ul>
+
+                                    <!-- Newsletter Form -->
+                                    <div class="search-btn">
+                                        <%--<i class="fa fa-search" aria-hidden="true"></i>--%>
+                                    </div>
+
+                                </div>
+                                <!-- Nav End -->
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ##### Header Area End ##### -->
+
+        <!-- ##### body -->
+        <div class="container" style="padding-top:30px">
+            <asp:ScriptManager runat="server" AsyncPostBackTimeout="1200">
+                    <Scripts>
+                        <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                        <%--Framework Scripts--%>
+                        <asp:ScriptReference Name="MsAjaxBundle" />
+                        <asp:ScriptReference Name="jquery" />
+                        <asp:ScriptReference Name="bootstrap" />
+                        <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                        <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                        <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                        <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                        <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                        <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                        <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                        <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                        <asp:ScriptReference Name="WebFormsBundle" />
+                        <%--Site Scripts--%>
+                    </Scripts>
+                </asp:ScriptManager>
+            <asp:UpdatePanel runat="server" ID="MainUpdatePanel" UpdateMode="Always" RenderMode="Block">
+                <ContentTemplate>
+                    <asp:ContentPlaceHolder runat="server" ID="MainContent"></asp:ContentPlaceHolder>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <!-- ##### body -->
+
+        <!-- ##### Footer Area Start ##### -->
+        <footer class="footer-area">
+            <div class="container h-100">
+                <div class="row h-100">
+                    <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between" style="text-align: right">
+                        <div class="footer-logo">
+                            <a href="index.html">
+                                <img src="/Content/img/core-img/logo.png" alt=""></a>
+                        </div>
+                        <p>
+                            18424010 | 1742069 | 18424027
+                   
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+    <!-- ##### Footer Area Start ##### -->
+    <!-- ##### All Javascript Files ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="/Content/js/jquery/jquery-2.2.4.min.js"></script>
+    <%--<script src="/Scripts/jquery-3.3.1.min.js"></script>--%>
+    <!-- Popper js -->
+    <script src="/Content/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/Content/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="/Content/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="/Content/js/active.js"></script>
+    <asp:ContentPlaceHolder runat="server" ID="Script"></asp:ContentPlaceHolder>
+</body>
+
+</html>
