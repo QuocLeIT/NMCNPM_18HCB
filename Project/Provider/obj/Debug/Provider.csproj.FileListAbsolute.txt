@@ -1,0 +1,5 @@
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Provider\bin\Debug\Provider.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Provider\bin\Debug\Provider.pdb
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Provider\obj\Debug\Provider.csprojResolveAssemblyReference.cache
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Provider\obj\Debug\Provider.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Provider\obj\Debug\Provider.pdb

@@ -1,0 +1,5 @@
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Core\bin\Debug\Core.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Core\bin\Debug\Core.pdb
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Core\obj\Debug\Core.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Core\obj\Debug\Core.pdb

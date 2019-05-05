@@ -1,0 +1,11 @@
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\bin\Debug\Service.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\bin\Debug\Service.pdb
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\bin\Debug\Core.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\bin\Debug\Data.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\bin\Debug\Core.pdb
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\bin\Debug\Data.pdb
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\obj\Debug\Service.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\obj\Debug\Service.pdb
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\bin\Debug\Provider.dll
+E:\LIEN THONG DH\NhapMonCongNghePhanMem\QLPhongGym\NMCNPM_18HCB\Project\Service\bin\Debug\Provider.pdb

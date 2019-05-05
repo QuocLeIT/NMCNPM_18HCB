@@ -30,5 +30,28 @@ namespace Core.Entity
         public string Pass { get; set; }
         [Column]
         public decimal Luong { get; set; }
+
+        public UserEntity()
+        {
+            ID = -1;       
+            NamSinh = 0;      
+            IDLoaiUser = 0;
+            Luong = 0;
+            Username = "";
+            Pass = "";
+        }
+
+        public UserEntity(long _id, string _name, int _namSinh, string _diaChi, string _email, string _phone, int _idLoaiUser, string _usename, decimal _luong)
+        {
+            ID = _id;
+            Name = _name;
+            NamSinh = _namSinh;
+            DiaChi = _diaChi;
+            Email = _email;
+            Phone = _phone;
+            IDLoaiUser = _idLoaiUser;
+            Username = _usename;
+            Luong = _luong;
+        }
     }
 }

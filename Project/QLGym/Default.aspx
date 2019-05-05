@@ -68,7 +68,7 @@
                                         <div class="col-4"></div>
                                         <div class="col-4 text-center">
                                             <%--<input type="password" class="form-control" id="password" placeholder="Password">--%>
-                                            <asp:TextBox runat="server" ID ="txtPassword" CssClass="form-control" type="password" placeholder="Username"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID ="txtPassword" CssClass="form-control" type="password" placeholder="Password"></asp:TextBox>
                                         </div>
                                         <div class="col-12 text-center">
                                             <%--<button class="btn delicious-btn mt-30" type="submit" onclick="Login()">Log in</button>--%>

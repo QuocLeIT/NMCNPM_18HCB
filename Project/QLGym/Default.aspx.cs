@@ -1,10 +1,12 @@
-﻿using Service;
+﻿using Core.Entity;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Provider;
 
 namespace QLGym
 {
@@ -31,13 +33,30 @@ namespace QLGym
                 Alert("Plase Enter Password");
                 return;
             }
+
             string Password = txtPassword.Text.ToMD5();
-            var User = UserService.GetByUsername(Username);
+            UserEntity User;
+            try
+            {
+                User = UserService.GetByUsername(Username);
+            }
+            catch (Exception ex)
+            {
+                User = UserService.GetByUsername(Username, Password);
+            }     
+             
             if(User == null)
             {
                 Alert("Username not exist");
                 return;
             }
+
+            if (User.ID < 1)
+            {
+                Alert("Login fail");
+                return;
+            }
+
             if(Password != User.Pass)
             {
                 Alert("Ivalid Password");
