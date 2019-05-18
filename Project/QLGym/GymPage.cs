@@ -36,7 +36,8 @@ namespace QLGym
 
         public void Alert(string message)
         {
-            Response.Write("<script>alert('" + message + "')</script>");
+            String alert = "<script>alert('" + message + "')</script>";
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "alert_" + DateTime.Now.Ticks, alert, false);
         }
     }
 }

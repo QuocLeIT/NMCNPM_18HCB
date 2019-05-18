@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Entity\CoachEntity.cs" />
     <Compile Include="Entity\UserEntity.cs" />
+    <Compile Include="Entity\UserTypeEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

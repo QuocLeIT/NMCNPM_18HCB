@@ -109,7 +109,7 @@
     // :: 7.0 ScrollUp Active Code
     if ($.fn.scrollUp) {
         browserWindow.scrollUp({
-            scrollSpeed: 1500,
+            scrollSpeed: 200,
             scrollText: '<i class="fa fa-angle-up"></i>'
         });
     }
@@ -144,6 +144,47 @@ function initForms() {
     var page = (window.location.pathname).split("/");
     var len = page.length;
 
+    //select
+    //$('.asp-select').hide();
+    //if ($('.asp-select').next().hasClass('nice-select')) {
+    //    $('.asp-select').next().remove();
+    //}
+
+    //var option = ""
+
+    //$(".asp-select > option").each(function () {
+    //    alert(this.text + ' ' + this.value);
+    //});
+    //$('.asp-select').after('<div class="nice-select" tabindex="0"><span class="current">-- None --</span><ul class="list"><li data-value="0" class="option selected focus">-- None --</li><li data-value="1" class="option">Customer</li><li data-value="2" class="option">Coach</li><li data-value="3" class="option">Admin</li></ul></div>')
+
+    // :: 9.0 nice Select Active Code
+    if ($.fn.niceSelect) {
+        $('select').niceSelect();
+    }
+
+    //Datetime picker
+    $(function () {
+        $('.date').datetimepicker({
+            format: 'YYYY-MM-DD',
+            Default: {
+                previous: 'fa fa-angle-left',
+                next: 'fa fa-angle-left',
+            },
+        });
+
+        $('.birth-date').datetimepicker({
+            //beforeShow: function () {
+            //    date: new Date(1997, 0, 1);
+            //    },
+            format: " YYYY", // Notice the Extra space at the beginning
+            viewMode: "years",
+            icons: {
+                previous: 'fa fa-angle-left',
+                next: 'fa fa-angle-right',
+            },
+        });
+    });
+
     var li = $('#NavMenu').children();
     li.each(function () {
         var atag = $(this).find('a:first');
@@ -151,7 +192,7 @@ function initForms() {
             $(this).removeClass('active');
         }
         if (atag.attr('href').includes('CoachList')) {
-            console.log(atag.attr('href'));
+            //console.log(atag.attr('href'));
             $(this).addClass("active");
         }
     })

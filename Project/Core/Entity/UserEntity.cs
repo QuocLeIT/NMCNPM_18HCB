@@ -10,19 +10,19 @@ namespace Core.Entity
     [Table(Name = "DMUserNames")]
     public class UserEntity
     {
-        [Column(IsDbGenerated =true, CanBeNull =false)]
+        [Column(IsDbGenerated =true, CanBeNull =false,IsPrimaryKey =true)]
         public long  ID { get; set; }
         [Column(CanBeNull =false)]
         public string Name { get; set; }
         [Column]
-        public int NamSinh { get; set; }
+        public int? NamSinh { get; set; }
         [Column]
         public string DiaChi { get; set; }
         [Column]
         public string Email { get; set; }
         [Column]
         public string Phone { get; set; }
-        [Column]
+        [Column(CanBeNull =false)]
         public int IDLoaiUser { get; set; }
         [Column]
         public string Username { get; set; }

@@ -17,7 +17,12 @@
     <link rel="icon" href="/Content/img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
+    <%--<link href="/Content/bootstrap.css" rel="stylesheet" />--%>
     <link rel="stylesheet" href="/Content/style.css">
+    <%--<link href="/Content/bootstrap.css" rel="stylesheet" />--%>
+    <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="/Content/css/icon-all.css" rel="stylesheet" />
+    <%--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">--%>
 
     <asp:ContentPlaceHolder runat="server" ID="HeadContent"></asp:ContentPlaceHolder>
 </head>
@@ -59,7 +64,7 @@
                             <div class="breaking-news">
                                 <div id="breakingNewsTicker" class="ticker">
                                     <ul>
-                                        <li><a href="#">Welcome to my gym club.</a></li>
+                                        <li><a href="#"><asp:Literal runat="server" ID="WelcomeText"></asp:Literal></a></li>
                                         <li><a href="#">Hello <%=_user.Name %>!</a></li>
                                     </ul>
                                 </div>
@@ -81,7 +86,7 @@
                 <div class="classy-nav-container breakpoint-off">
                     <div class="container">
                         <!-- Menu -->
-                        <nav class="classy-navbar justify-content-between" id="deliciousNav" style="border-bottom: 1px solid #4CAF50">
+                        <nav class="classy-navbar justify-content-between" id="deliciousNav" style="border-bottom: 2px solid #1C8314">
 
                             <!-- Logo -->
                             <a class="nav-brand" href="index.html">
@@ -105,7 +110,7 @@
                                     <ul id="NavMenu">
                                         <li><a href="index.html">Lịch tập</a></li>
                                         <li><a href="CustomerList.html">Danh sách khách hàng</a></li>
-                                        <li><a href="/Page/Coach/CoachList.aspx">Danh sách huấn luyện viên</a></li>
+                                        <li><a href="/Page/Coach/CoachList.aspx">Danh sách nhân viên</a></li>
                                         <li><a href="#">Thu chi</a></li>
                                     </ul>
 
@@ -155,8 +160,8 @@
 
         <!-- ##### Footer Area Start ##### -->
         <footer class="footer-area">
-            <div class="container h-100">
-                <div class="row h-100">
+            <div class="container h-100" style="border-top:2px solid #1C8314;margin-top:10px">
+                <div class="row h-100" style="">
                     <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between" style="text-align: right">
                         <div class="footer-logo">
                             <a href="index.html">
@@ -177,13 +182,17 @@
     <script src="/Content/js/jquery/jquery-2.2.4.min.js"></script>
     <%--<script src="/Scripts/jquery-3.3.1.min.js"></script>--%>
     <!-- Popper js -->
-    <script src="/Content/js/bootstrap/popper.min.js"></script>
+    <%--<script src="/Content/js/bootstrap/popper.min.js"></script>--%>
+    <script src="/Scripts/bootstrap.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="/Content/js/bootstrap/bootstrap.min.js"></script>
+    <%--<script src="/Content/js/bootstrap/bootstrap.min.js"></script>--%>
+    <script src="/Content/bootstrap.min.js"></script>
     <!-- All Plugins js -->
     <script src="/Content/js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="/Content/js/active.js"></script>
+    <script src="/Scripts/moment.js"></script>
+    <script src="/Scripts/bootstrap-datetimepicker.js"></script>
     <asp:ContentPlaceHolder runat="server" ID="Script"></asp:ContentPlaceHolder>
 </body>
 

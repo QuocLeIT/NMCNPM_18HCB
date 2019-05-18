@@ -39,6 +39,14 @@ namespace Service
             }
         }
 
+        public static UserEntity GetById(int Id)
+        {
+            using (var db = new DataContext())
+            {
+                return (from u in db.Users where u.ID == Id select u).FirstOrDefault();
+            }
+        }
+
         //User DataProvider connect
         public static List<UserEntity> GetAll_2()
         {
@@ -91,6 +99,65 @@ namespace Service
             return us;
         }
 
+
+        public static DataTable GetDynamic(string Username, string Phone, string Email, int? Usertype, int? RowPerPage, int? PageNumber)
+        {
+            using (var db = new UserContext())
+            {
+                return db.GetDynamic(Username, Phone, Email, Usertype, RowPerPage, PageNumber);
+            }
+        }
+
+        public static void Insert(ref UserEntity newUser)
+        {
+            using (var db = new DataContext())
+            {
+                newUser.ID = 0;
+                db.Users.InsertOnSubmit(newUser);
+                db.SubmitChanges();
+            }
+        }
+        public static void Update(UserEntity UpdateInfo)
+        {
+            using (var db = new DataContext())
+            {
+                var UserUpdate = (from u in db.Users where u.ID == UpdateInfo.ID select u).FirstOrDefault();
+                if (UserUpdate != null)
+                {
+                    UserUpdate.Name = UpdateInfo.Name;
+                    UserUpdate.IDLoaiUser = UpdateInfo.IDLoaiUser;
+                    UserUpdate.NamSinh = UpdateInfo.NamSinh;
+                    UserUpdate.Phone = UpdateInfo.Phone;
+                    UserUpdate.Email = UpdateInfo.Email;
+                    UserUpdate.Luong = UpdateInfo.Luong;
+                    UserUpdate.DiaChi = UpdateInfo.DiaChi;
+                    db.SubmitChanges();
+                }
+            }
+        }
+        public static void UpdatePass(int UserId,string NewPass)
+        {
+            using (var db = new DataContext())
+            {
+                var UserUpdate = (from u in db.Users where u.ID == UserId select u).FirstOrDefault();
+                UserUpdate.Pass = NewPass;
+                db.SubmitChanges();
+            }
+        }
+        public static UserEntity Delete(int UserId)
+        {
+            using (var db = new DataContext())
+            {
+                var UserDelete = (from u in db.Users where u.ID == UserId select u).FirstOrDefault();
+                if (UserDelete != null)
+                {
+                    db.Users.DeleteOnSubmit(UserDelete);
+                }
+                db.SubmitChanges();
+                return UserDelete;
+            }
+        }
+
         //public static CoachEntity GetByUsername(string Username)
         //{
         //    using (var db = new DataContext())
@@ -104,13 +171,6 @@ namespace Service
         //    using (var db = new CoachContext())
         //    {
         //        return db.Getlist(CoachCode).ToList();
-        //    }
-        //}
-        //public static DataTable GetDataTable(string CoachCode)
-        //{
-        //    using (var db = new CoachContext())
-        //    {
-        //        return db.GetDataTable(CoachCode);
         //    }
         //}
         //public static DataSet GetDataSet(string CoachCode)

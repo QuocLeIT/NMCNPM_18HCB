@@ -11,7 +11,8 @@ namespace QLGym.UIControl
     {
         public event EventHandler ButtonClick;
 
-        public int TotalPage { get; set; }
+        public int TotalRow { get; set; }
+        public int PageSize { get; set; }
         public int PageIndex { get; set; }
         public class Paging
         {
@@ -23,9 +24,16 @@ namespace QLGym.UIControl
         //    load();
         //}
 
-        public void BingPaging(int totalPage)
+        public void BingPaging(int totalRow,int pageSize,int pageNumber = 1)
         {
-            TotalPage = totalPage;
+            if(pageNumber != 1)
+            {
+                return;
+            }
+            TotalRow = totalRow;
+            PageSize = pageSize;
+
+            int TotalPage = ((TotalRow - 1) / PageSize) + 1;
 
             List<Paging> paging = new List<Paging>();
             for (int i = 1; i <= TotalPage; i++)
@@ -44,11 +52,49 @@ namespace QLGym.UIControl
             var pagesend = sender as LinkButton;
             if (pagesend.CommandArgument == "&laquo;")
             {
-
+                for (int i = 1; i < rpPager.Items.Count - 1; i++)
+                {
+                    var lnkPageIndex = rpPager.Items[i].FindControl("lnkPageIndex") as LinkButton;
+                    string Class = lnkPageIndex.CssClass;
+                    lnkPageIndex.CssClass = "";
+                    if(Class == "active")
+                    {
+                        if(lnkPageIndex.CommandArgument == "1")
+                        {
+                            lnkPageIndex.CssClass = "active";
+                            PageIndex = int.Parse(lnkPageIndex.CommandArgument);
+                        }
+                        else
+                        {
+                            PageIndex = int.Parse(lnkPageIndex.CommandArgument) -1;
+                            var lnkPageActive = rpPager.Items[PageIndex].FindControl("lnkPageIndex") as LinkButton;
+                            lnkPageActive.CssClass = "active";
+                        }
+                    }
+                }
             }
             else if (pagesend.CommandArgument == "&raquo;")
             {
-
+                for (int i = rpPager.Items.Count - 2; i >= 1; i--)
+                {
+                    var lnkPageIndex = rpPager.Items[i].FindControl("lnkPageIndex") as LinkButton;
+                    string Class = lnkPageIndex.CssClass;
+                    lnkPageIndex.CssClass = "";
+                    if (Class == "active")
+                    {
+                        if (lnkPageIndex.CommandArgument == (rpPager.Items.Count - 2).ToString())
+                        {
+                            lnkPageIndex.CssClass = "active";
+                            PageIndex = int.Parse(lnkPageIndex.CommandArgument);
+                        }
+                        else
+                        {
+                            PageIndex = int.Parse(lnkPageIndex.CommandArgument) + 1;
+                            var lnkPageActive = rpPager.Items[PageIndex].FindControl("lnkPageIndex") as LinkButton;
+                            lnkPageActive.CssClass = "active";
+                        }
+                    }
+                }
             }
             else
             {
@@ -57,7 +103,7 @@ namespace QLGym.UIControl
                     var lnkPageIndex = rpPager.Items[i].FindControl("lnkPageIndex") as LinkButton;
                     lnkPageIndex.CssClass = "";
                 }
-                pagesend.Attributes.Add("class", "active");
+                pagesend.CssClass = "active";
                 PageIndex = int.Parse(pagesend.CommandArgument);
             }
             if (this.ButtonClick != null)
