@@ -218,3 +218,39 @@ CREATE TABLE DMLichTapPhongGym_ChiTiet(
    PRIMARY KEY(ID)
 );
 
+--Store procedure
+/*
+[User.GetDynamic] @Usertype = 0
+ */
+ALTER PROC [User.GetDynamic]
+@Username NVARCHAR(64) = NULL,
+@Phone NVARCHAR(64) = NULL,
+@Email NVARCHAR(64) = NULL,
+@Usertype INT = NULL,
+@RowPerPage INT = NULL,
+@PageNumber INT = NULL
+AS
+BEGIN
+	SET @RowPerPage = ISNULL(@RowPerPage,50)
+	SET @PageNumber = ISNULL(@PageNumber,1)
+	
+	SELECT dn.ID,dn.Name,dn.NamSinh,dn.DiaChi,dn.Email,dn.Phone,dn.IDLoaiUser,dn.Username,dn.Pass,dn.Luong,du.Name AS LoaiUser,ROW_NUMBER() OVER (ORDER BY dn.IDLoaiUser,dn.NAME) AS RowNum
+	INTO #temp
+	FROM DMUserNames AS dn
+	LEFT JOIN DMLoaiUsers AS du ON du.ID = dn.IDLoaiUser
+	WHERE (@Username IS NULL OR dn.Username = @Username)
+	AND((@Usertype = 0 AND du.Name<>'Khách hàng') OR  dn.IDLoaiUser = @Usertype)
+	AND(@Phone IS NULL OR dn.Phone = @Phone)
+	AND(@Email IS NULL OR dn.Email = @Email)
+	
+	DECLARE @total INT;
+	SELECT @total = COUNT(1) FROM #temp t
+	
+	SELECT *,@total AS Total
+	FROM #temp AS t
+	WHERE t.RowNum between ((@PageNumber-1)*@RowPerPage)+1 and (@RowPerPage*@PageNumber)
+	GROUP BY ID,Name,NamSinh,DiaChi,Email,Phone,IDLoaiUser,Username,Pass,Luong,LoaiUser,t.RowNum
+	ORDER BY t.RowNum
+	
+	DROP TABLE #temp
+END
