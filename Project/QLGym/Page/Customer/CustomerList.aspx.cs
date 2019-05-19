@@ -7,9 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace QLGym.Coach
+namespace QLGym.Page.Customer
 {
-    public partial class CoachList : GymPage
+    public partial class CustomerList : GymPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,19 +19,23 @@ namespace QLGym.Coach
                 loadData(1);
             }
         }
+
         void init()
         {
-            ddlPosition.type = 1;
+            ddlPosition.type = 2;
+            ddlPosition.haveOptionAll = false;
             ddlPosition.DataBind();
-            ddlPositionNew.type = 1;
+            ddlPositionNew.type = 2;
+            ddlPositionNew.haveOptionAll = false;
             ddlPosition.DataBind();
         }
         void loadData(int pageNumber, int pageSize = 25)
         {
             int Type = ddlPosition.PositionId;
+            string Email = string.IsNullOrWhiteSpace(txtSearchEmail.Text) ? null : txtSearchEmail.Text;
             string Username = string.IsNullOrWhiteSpace(txtUsername.Text) ? null : txtUsername.Text;
             string Phone = string.IsNullOrWhiteSpace(txtPhone.Text) ? null : txtPhone.Text;
-            var lstEmployee = UserService.GetDynamic(Username, Phone, null, Type, pageSize, pageNumber);
+            var lstEmployee = UserService.GetDynamic(Username, Phone, Email, Type, pageSize, pageNumber);
             int TotalRow = 0;
 
             if (lstEmployee.Rows.Count > 0)
@@ -72,7 +76,7 @@ namespace QLGym.Coach
 
             txtUsernew.Enabled = true;
             txtPassNew.Enabled = true;
-            btnCreateSubmit.Text = "Create Employee";
+            btnCreateSubmit.Text = "Create Customer";
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -90,17 +94,17 @@ namespace QLGym.Coach
         {
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
-                Alert("Vui lòng nhập Tên nhân viên");
+                Alert("Vui lòng nhập Tên Khách hàng");
                 return;
             }
             if (ddlPositionNew.PositionId == 0)
             {
-                Alert("Vui lòng chọn Loại nhân viên");
+                Alert("Vui lòng chọn Loại Khách hàng");
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtPhoneNew.Text))
             {
-                Alert("Vui lòng nhập điện thoại nhân viên");
+                Alert("Vui lòng nhập điện thoại Khách hàng");
                 return;
             }
             if (string.IsNullOrWhiteSpace(txtUsernew.Text))
@@ -124,7 +128,7 @@ namespace QLGym.Coach
             }
 
             decimal salary = 0;
-            decimal.TryParse(txtSalary.Text, out salary);
+            //decimal.TryParse(txtSalary.Text, out salary);
 
             UserEntity newUser = new UserEntity()
             {
@@ -144,7 +148,7 @@ namespace QLGym.Coach
                 try
                 {
                     UserService.Update(newUser);
-                    Alert("Cập nhật nhân viên thành công");
+                    Alert("Cập nhật Khách hàng thành công");
                     loadData(1);
                 }
                 catch
@@ -157,7 +161,7 @@ namespace QLGym.Coach
                 UserService.Insert(ref newUser);
                 if (newUser.ID != 0)
                 {
-                    Alert("Thêm nhân viên thành công");
+                    Alert("Thêm Khách hàng thành công");
                 }
                 else
                 {
@@ -196,7 +200,7 @@ namespace QLGym.Coach
 
             txtUsernew.Enabled = false;
             txtPassNew.Enabled = false;
-            btnCreateSubmit.Text = "Update Employee";
+            btnCreateSubmit.Text = "Update Customer";
         }
 
         protected void btnResetPass_Click(object sender, EventArgs e)
@@ -204,7 +208,7 @@ namespace QLGym.Coach
             var btnReset = sender as LinkButton;
             try
             {
-                UserService.UpdatePass(int.Parse(btnReset.CommandArgument),"123456".ToMD5());
+                UserService.UpdatePass(int.Parse(btnReset.CommandArgument), "123456".ToMD5());
                 Alert("Reset password thành công");
             }
             catch
@@ -219,7 +223,7 @@ namespace QLGym.Coach
             try
             {
                 UserService.Delete(int.Parse(btnDelete.CommandArgument));
-                Alert("Xóa nhân viên thành công");
+                Alert("Xóa Khách hàng thành công");
                 loadData(1);
             }
             catch

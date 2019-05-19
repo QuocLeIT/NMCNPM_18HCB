@@ -1,12 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CoachList.aspx.cs" Inherits="QLGym.Coach.CoachList" %>
-
-
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CustomerList.aspx.cs" Inherits="QLGym.Page.Customer.CustomerList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <link href="../../Content/css/chosen.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
     <!-- Modal -->
     <div runat="server" class="modal in" id="dvImport" visible="false" tabindex="-1" role="dialog" aria-labelledby="modal-fa5-label" style="display: block;">
         <div class="modal-dialog modal-lg" role="document" style="padding-top: 50px">
@@ -24,12 +19,12 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <div class="receipe-post-search mb-30">
-                                            <asp:TextBox runat="server" ID="txtName" placeholder="Tên nhân viên"></asp:TextBox>
+                                            <asp:TextBox runat="server" ID="txtName" placeholder="Tên Khách hàng"></asp:TextBox>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6" style="z-index: 50;">
+                                    <div class="col-sm-6" style="z-index: 50; display:none">
                                         <div class="receipe-post-search mb-30">
-                                            <QLG:DDLPosition runat="server" ID="ddlPositionNew" CssClass="asp-select"></QLG:DDLPosition>
+                                            <QLG:DDLPosition runat="server" ID="ddlPositionNew" Visible="false" CssClass="asp-select"></QLG:DDLPosition>
                                         </div>
                                     </div>
                                     <div class="col-6" style="z-index: 50;">
@@ -42,6 +37,11 @@
                                             <asp:TextBox runat="server" ID="txtPhoneNew" placeholder="Số điện thoại"></asp:TextBox>
                                         </div>
                                     </div>
+                                    <div class="col-sm-6">
+                                        <div class="receipe-post-search mb-30">
+                                            <asp:TextBox runat="server" ID="txtEmail" placeholder="Email"></asp:TextBox>
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <div class="receipe-post-search mb-30">
                                             <asp:TextBox runat="server" ID="txtAddress" placeholder="Địa chỉ"></asp:TextBox>
@@ -49,17 +49,12 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="receipe-post-search mb-30">
-                                            <asp:TextBox runat="server" ID="txtEmail" placeholder="Email"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="receipe-post-search mb-30">
                                             <div class="row">
                                                 <div class="col-6" style="padding-right: 0px">
-                                                    <asp:TextBox runat="server" ID="txtSalary" type="number" placeholder="Lương"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtSalary" Visible="false" type="number" placeholder="Lương"></asp:TextBox>
                                                 </div>
                                                 <div class="col-6" style="padding-left: 2px">
-                                                    <asp:TextBox runat="server" ID="txtSubSalary" Enabled="false" Text=".000 VND"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="txtSubSalary" Visible="false" Enabled="false" Text=".000 VND"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +76,7 @@
                         </div>
                         <div class="row">
                             <div class="col align-self-center">
-                                <asp:LinkButton ID="btnCreateSubmit" CssClass="btn delicious-btn" runat="server" OnClick="btnCreateSubmit_Click">Create Employee</asp:LinkButton>
+                                <asp:LinkButton ID="btnCreateSubmit" CssClass="btn delicious-btn" runat="server" OnClick="btnCreateSubmit_Click">Create Customer</asp:LinkButton>
                             </div>
                         </div>
                     </div>
@@ -97,7 +92,8 @@
     <div class="receipe-post-search mb-30">
         <div class="row">
             <div class="col-12 col-lg-3">
-                <QLG:DDLPosition runat="server" ID="ddlPosition" CssClass="asp-select"></QLG:DDLPosition>
+                <QLG:DDLPosition runat="server" ID="ddlPosition" Visible="false" CssClass="asp-select"></QLG:DDLPosition>
+                <asp:TextBox runat="server" ID="txtSearchEmail" placeholder="Search by Email"></asp:TextBox>
             </div>
             <div class="col-12 col-lg-3">
                 <asp:TextBox runat="server" ID="txtUsername" placeholder="Search by Username"></asp:TextBox>
@@ -114,7 +110,7 @@
     <div class="receipe-post-search mb-30" style="margin-bottom: 10px !important; z-index: unset;margin-left:-4px">
         <div class="row">
             <div class="col-12 col-lg-12">
-                <asp:LinkButton runat="server" ID="btnCreate" CssClass="btn delicious-btn m-1 create" OnClick="btnCreate_Click">New Employee</asp:LinkButton>
+                <asp:LinkButton runat="server" ID="btnCreate" CssClass="btn delicious-btn m-1 create" OnClick="btnCreate_Click">New Customer</asp:LinkButton>
             </div>
         </div>
     </div>
@@ -122,12 +118,10 @@
         <thead class="thead-primary">
             <tr>
                 <th scope="col">STT</th>
-                <th scope="col">Vị trí</th>
                 <th scope="col">Tên</th>
                 <th scope="col">Năm sinh</th>
                 <th scope="col">Số điện thoại</th>
                 <th scope="col">Email</th>
-                <th scope="col">Lương</th>
                 <th scope="col">Địa chỉ</th>
                 <th scope="col">Username</th>
                 <th scope="col">Tools</th>
@@ -139,18 +133,16 @@
                     <tr>
                         <asp:HiddenField runat="server" ID="hfUserId" Value='<%#Eval("ID") %>' />
                         <td><%#Eval("RowNum") %></td>
-                        <td><%#Eval("LoaiUser") %></td>
                         <td><%#Eval("Name") %></td>
                         <td><%#Eval("NamSinh") %></td>
                         <td><%# Eval("Phone") %></td>
                         <td><%# Eval("Email") %></td>
-                        <td><%# String.Format("{0:C0}", Eval("Luong")).Replace("$","") %></td>
                         <td><%# Eval("DiaChi") %></td>
                         <td><%# Eval("Username") %></td>
                         <td>
                             <asp:LinkButton runat="server" ID="btnEdit" CommandArgument='<%#Eval("ID") %>' Style="color: #4CAF50" ToolTip="Edit" OnClick="btnEdit_Click"><i class="fa fa-edit"></i></asp:LinkButton>
-                            <asp:LinkButton runat="server" ID="btnResetPass" CommandArgument='<%#Eval("ID") %>' Style="color: #4CAF50;" ToolTip="Reset password" OnClick="btnResetPass_Click" OnClientClick="return confirm('Xác nhận reset mật khẩu nhân viên?')"><i class="fa fa-sync"></i></asp:LinkButton>
-                            <asp:LinkButton runat="server" ID="btnDelete" CommandArgument='<%#Eval("ID") %>' Style="color: #4CAF50; float: right" ToolTip="Delete" OnClick="btnDelete_Click" OnClientClick="return confirm('Xác nhận xóa nhân viên?')"><i class="fa fa-times-circle"></i></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnResetPass" CommandArgument='<%#Eval("ID") %>' Style="color: #4CAF50;" ToolTip="Reset password" OnClick="btnResetPass_Click" OnClientClick="return confirm('Xác nhận reset mật khẩu Khách hàng?')"><i class="fa fa-sync"></i></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnDelete" CommandArgument='<%#Eval("ID") %>' Style="color: #4CAF50; float: right" ToolTip="Delete" OnClick="btnDelete_Click" OnClientClick="return confirm('Xác nhận xóa Khách hàng?')"><i class="fa fa-times-circle"></i></asp:LinkButton>
                         </td>
                     </tr>
                 </ItemTemplate>

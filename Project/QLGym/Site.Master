@@ -22,7 +22,6 @@
     <%--<link href="/Content/bootstrap.css" rel="stylesheet" />--%>
     <link href="/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
     <link href="/Content/css/icon-all.css" rel="stylesheet" />
-    <%--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">--%>
 
     <asp:ContentPlaceHolder runat="server" ID="HeadContent"></asp:ContentPlaceHolder>
 </head>
@@ -109,7 +108,7 @@
                                 <div class="classynav">
                                     <ul id="NavMenu">
                                         <li><a href="index.html">Lịch tập</a></li>
-                                        <li><a href="CustomerList.html">Danh sách khách hàng</a></li>
+                                        <li><a href="/Page/Customer/CustomerList.aspx">Danh sách khách hàng</a></li>
                                         <li><a href="/Page/Coach/CoachList.aspx">Danh sách nhân viên</a></li>
                                         <li><a href="#">Thu chi</a></li>
                                     </ul>

@@ -185,14 +185,15 @@ function initForms() {
         });
     });
 
+    var pathname = window.location.pathname;
     var li = $('#NavMenu').children();
     li.each(function () {
         var atag = $(this).find('a:first');
         if ($(this).hasClass('active')) {
             $(this).removeClass('active');
         }
-        if (atag.attr('href').includes('CoachList')) {
-            //console.log(atag.attr('href'));
+        if (atag.attr('href').includes(pathname)) {
+            //console.log(pathname);
             $(this).addClass("active");
         }
     })
