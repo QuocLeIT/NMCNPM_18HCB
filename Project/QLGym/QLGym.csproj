@@ -152,6 +152,8 @@
     <Content Include="Content\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Page\Customer\CustomerList.aspx" />
+    <Content Include="Page\PackageList.aspx" />
+    <Content Include="Page\RegisPackageList.aspx" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -240,6 +242,20 @@
     <Compile Include="Page\Customer\CustomerList.aspx.designer.cs">
       <DependentUpon>CustomerList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Page\PackageList.aspx.cs">
+      <DependentUpon>PackageList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\PackageList.aspx.designer.cs">
+      <DependentUpon>PackageList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Page\RegisPackageList.aspx.cs">
+      <DependentUpon>RegisPackageList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page\RegisPackageList.aspx.designer.cs">
+      <DependentUpon>RegisPackageList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -255,6 +271,7 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="UIControl\DDLCustom.cs" />
     <Compile Include="UIControl\DDLPosition.cs" />
     <Compile Include="UIControl\Pager.ascx.cs">
       <DependentUpon>Pager.ascx</DependentUpon>

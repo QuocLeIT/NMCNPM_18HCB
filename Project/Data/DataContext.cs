@@ -23,5 +23,6 @@ namespace Data
         public Table<UserEntity> Users { get { return GetTable<UserEntity>(); } }
         public Table<UserTypeEntity> UserType { get { return GetTable<UserTypeEntity>(); } }
         public Table<PackageEntity> Packages { get { return GetTable<PackageEntity>(); } }
+        public Table<RegisPackageEntity> RegisPackages { get { return GetTable<RegisPackageEntity>(); } }
     }
 }

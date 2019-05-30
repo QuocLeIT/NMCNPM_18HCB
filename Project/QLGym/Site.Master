@@ -149,7 +149,7 @@ li.dropdown {
                                          <li class="dropdown">
                                             <a href="#" class="dropbtn">Gói tập</a>
                                             <div class="dropdown-content">
-                                              <a href="#">Đăng ký gói tập</a>
+                                              <a href="/Page/RegisPackageList.aspx">Đăng ký gói tập</a>
                                               <a href="/Page/PackageList.aspx">Danh sách gói tập</a>
                                               
                                             </div>
