@@ -22,5 +22,6 @@ namespace Data
         public Table<CoachEntity> Coachs { get { return GetTable<CoachEntity>(); } }
         public Table<UserEntity> Users { get { return GetTable<UserEntity>(); } }
         public Table<UserTypeEntity> UserType { get { return GetTable<UserTypeEntity>(); } }
+        public Table<PackageEntity> Packages { get { return GetTable<PackageEntity>(); } }
     }
 }

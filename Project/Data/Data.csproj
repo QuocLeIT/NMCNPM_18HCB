@@ -46,6 +46,7 @@
     <Compile Include="BaseDataContext.cs" />
     <Compile Include="CoachContext.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="PackageContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserContext.cs" />
   </ItemGroup>
