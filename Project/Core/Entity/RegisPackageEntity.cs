@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Linq.Mapping;
 
+
+
 namespace Core.Entity
 {
      [Table(Name = "DMDangKyGoiTap")]
@@ -73,6 +75,7 @@ namespace Core.Entity
 
             NgayDK = _NgayDK;
             GhiChu = _GhiChu;
+
 
             Price = _Price;
             Quantity = _Quantity;
